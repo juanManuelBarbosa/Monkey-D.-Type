@@ -1,0 +1,33 @@
+.contenedor{
+    
+    font-size: 31px;
+    color: gray;
+}
+
+#letter{
+    position: relative;
+}
+
+.active::before{
+    content: '|';
+    position: absolute;
+    left: -70%;
+    color:#daaf38;
+    animation: 1.1s blink infinite ease-in-out;
+}
+
+@keyframes blink {
+    0%, 25%{
+        opacity: 1;
+    }
+
+    75%{
+        opacity: 0;
+    }
+    
+}
+
+input{
+    position: absolute;
+    opacity: 0;
+}

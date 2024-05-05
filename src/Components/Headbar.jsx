@@ -1,7 +1,9 @@
 const HeadBar = ()=>{
     return<>
-        <p>logo</p>
-        <h1>Monkey D. Type</h1>
+        <img 
+        src="https://i.ibb.co/zGt9LLq/mokey-d-type.png" 
+        alt="" 
+        style={{ width: '400px', height: 'auto' }}/>
     </>
 }
 export default HeadBar
