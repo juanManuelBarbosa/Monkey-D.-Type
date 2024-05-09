@@ -1,0 +1,24 @@
+.menu-time{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.boton-time{
+    background-color: transparent;
+    border: none;
+    color: #cccccc;
+    font-size: 17px;
+    transition: transform 0.2s ease;
+}
+
+.boton-time:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+    color: #dedede;
+}
+
+.clock-icon{
+    font-size: 20px;
+}
