@@ -5,13 +5,13 @@ import Menu from './Menu'
 import '../styles/paragraphContainer.css'
 const ParagraphContainer = ()=>{
     const [init , setInit] = useState(false)
-
+    const[contTime, setContTime] = useState(15)
     return(<>
     <div className='container'>
-        <Time init={init} />
-        <Phrase setInit={setInit}/>
-        <Menu/>
-    </div>
+        <Time init={init} contTime={contTime}  />
+        <Phrase setInit={setInit} />
+        <Menu setContTime={setContTime} contTime={contTime}/>
+    </div >
         
     </>)
 }

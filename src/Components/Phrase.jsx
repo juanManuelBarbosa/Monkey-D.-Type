@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../styles/phrase.css'
-const Phrase = ({setInit}) => {
+const Phrase = ({setInit , contTime}) => {
   const phrase =
     "Voluntad heredada la era del destino y los sueños de la gente esas son cosas que nunca serán detenidas siempre y cuando la gente siga persiguiendo el significado de la libertad, nadie podrá quitárselas nunca Esas cosas nunca dejarán de existir";
   const [typedText, setTypedText] = useState("");
   const [canDelete, setCanDelete] = useState(true); 
 
 
+  useEffect(() => {
+    setTypedText('');
+  }, [contTime]); 
 
   const handleChange = (e) => {
     const inputText = e.target.value;

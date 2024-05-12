@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import '../styles/time.css'
-const Time = ({init}) => {
-  const [time, setTime] = useState(5);
+const Time = ({init, contTime }) => {
+
+  useEffect(()=>{
+    setTime(contTime)
+  } , [contTime]) 
+
+
+  const [time, setTime] = useState(0);
 
   const gameOver = ()=>{
     console.log('fin del juego')
