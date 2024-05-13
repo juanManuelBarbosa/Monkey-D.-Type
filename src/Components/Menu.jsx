@@ -1,10 +1,6 @@
 import { IoHourglassOutline } from "react-icons/io5";
 import '../styles/menu.css'
 const Menu = ({setContTime })=>{
-    const handleClick = (time)=>{
-        setContTime(time)
-    }
-
 
     return <>
     <div>
