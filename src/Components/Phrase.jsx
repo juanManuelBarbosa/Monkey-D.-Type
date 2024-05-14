@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import '../styles/phrase.css'
+import data from '../phrases.json'
 const Phrase = ({setInit , contTime}) => {
-  const phrase =
-    "gold d roger";
+  const primerDato = data[0]
+  const phrase = "a"
   const [typedText, setTypedText] = useState("");
   const [canDelete, setCanDelete] = useState(true); 
   const [playImage, setPlayImage] = useState(false);
+  
 
   useEffect(() => {
     setTypedText('');
@@ -85,7 +87,9 @@ const Phrase = ({setInit , contTime}) => {
       className="input"/>
 
     {playImage && (
-        <img src="https://www.hdwallpapers.in/thumbs/2021/gol_d__roger_hd_one_piece-t2.jpg"/>
+         <div className="image-container show">
+         <img src={primerDato.urlImagen} alt="Gold D Roger"/>
+       </div>
       )}
     </>
   );
