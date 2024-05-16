@@ -67,6 +67,7 @@ input {
  height: 400px;
 }
 
+/*inicio de animacion en secuencia para evitar que el usuario sienta tanto la carga de la imagen */
 .image-container.show {
   animation: fadeIn 0.5s ease forwards;
 }
@@ -74,19 +75,19 @@ input {
 .image-container h2,
 .image-container img {
   opacity: 0;
-  animation: fadeIn 2s forwards; /* Aplicar animación de desvanecimiento */
+  animation: fadeIn 2s forwards;       
 }
 
 .image-container h2:nth-child(1) {
-  animation-delay: 0.5s; /* Retraso para mostrar el primer elemento */
+  animation-delay: 0.5s; 
 }
 
 .image-container h2:nth-child(2) {
-  animation-delay: 1.5s; /* Retraso para mostrar el segundo elemento */
+  animation-delay: 1.5s; 
 }
 
 .image-container img {
-  animation-delay: 3s; /* Retraso para mostrar la imagen */
+  animation-delay: 3s;
 }
 
 .fadeIn {

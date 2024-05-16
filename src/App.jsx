@@ -4,9 +4,12 @@ import Footer from "./Components/Footer"
 function App() {
   return (
     <>
+    <div className="generalContainer">
     <HeadBar/>
     <ParagraphContainer/>
     <Footer/>
+    </div>
+    
     </>
   )
 }
