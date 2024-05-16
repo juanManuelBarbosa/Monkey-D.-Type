@@ -1,0 +1,32 @@
+.footerContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0; 
+    width: 100%;
+    z-index: 998;
+}
+
+.footerContainer p {
+    color: #ccc;
+    font-size: 20px;
+}
+
+
+.iconFooter {
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    
+}
+
+.iconFooter a {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+}

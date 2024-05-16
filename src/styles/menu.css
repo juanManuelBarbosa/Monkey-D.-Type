@@ -1,6 +1,7 @@
 .menu-time{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 30px;
     padding: 20px;
 }
@@ -21,4 +22,18 @@
 
 .clock-icon{
     font-size: 20px;
+}
+
+.restart{
+    background: none;
+    border: none;
+    font-size:30px ;
+    color: #cccccc;
+    transition: transform 0.2s ease;
+}
+
+.restart:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+    color: #dedede;
 }

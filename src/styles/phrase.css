@@ -1,77 +1,103 @@
-.contenedor{
-    font-size: 31px;
-    color: gray;
+.contenedor {
+  font-size: 31px;
+  color: gray;
 }
 
-.letter{
-    position: relative;
+.letter {
+  position: relative;
 }
 
-.active::before{
-    content: '|';
-    position: absolute;
-    left: -70%;
-    color:#daaf38;
-    animation: 1.1s blink infinite ease-in-out;
+.active::before {
+  content: '|';
+  position: absolute;
+  left: -70%;
+  color: #daaf38;
+  animation: 1.1s blink infinite ease-in-out;
 }
 
 @keyframes blink {
-    0%, 25%{
-        opacity: 1;
-    }
+  0%, 25% {
+    opacity: 1;
+  }
 
-    75%{
-        opacity: 0;
-    }
-    
+  75% {
+    opacity: 0;
+  }
 }
 
-input{
-    position: absolute;
-    opacity: 0;
+input {
+  position: absolute;
+  opacity: 0;
 }
 
 .image-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Asegura que la imagen esté por encima de otros elementos */
-    animation: fadeIn 0.5s ease; /* Animación de aparición */
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .image-container img {
-    max-width: 100%;
-    max-height: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  font-size: 40px;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background-color: rgba(8, 8, 8, 0.934);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.5s ease;
+  opacity: 0; /* Inicialmente oculto */
+}
 
-  
-
-  @keyframes zoomIn {
-    from {
-      transform: scale(1.2); /* Iniciar la imagen con un tamaño ligeramente mayor para el efecto de zoom in */
-    }
-    to {
-      transform: scale(1); /* Escala normal, es decir, sin zoom */
-  }}
-  
-  .image-container.show img {
-    animation: zoomIn 5s forwards; /* La imagen se mantendrá en el último fotograma de la animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  
-  
+  to {
+    opacity: 1;
+  }
+}
+
+.image-container h2{
+  font-size: 40px;
+}
+
+.image-container img{
+ height: 400px;
+}
+
+.image-container.show {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.image-container h2,
+.image-container img {
+  opacity: 0;
+  animation: fadeIn 2s forwards; /* Aplicar animación de desvanecimiento */
+}
+
+.image-container h2:nth-child(1) {
+  animation-delay: 0.5s; /* Retraso para mostrar el primer elemento */
+}
+
+.image-container h2:nth-child(2) {
+  animation-delay: 1.5s; /* Retraso para mostrar el segundo elemento */
+}
+
+.image-container img {
+  animation-delay: 3s; /* Retraso para mostrar la imagen */
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
