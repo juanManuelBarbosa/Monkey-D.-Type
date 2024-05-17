@@ -1,3 +1,8 @@
+html, body {
+  zoom: 1; 
+  font-size: 16px; 
+}
+
 :root {
   font-family: Menlo, monospace;
   line-height: 1.5;
