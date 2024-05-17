@@ -1,36 +1,50 @@
 import React, { useState, useEffect } from "react";
 import '../styles/time.css'
-const Time = ({init, contTime }) => {
+const Time = ({init, contTime , setsuccess, playImage, setPlayImage }) => {
   const [time, setTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
 
+//manejo de contador
   useEffect(() => {
     if (init) {
-      setIsActive(true);  // => Comienza a contar cuando init es verdadero
+      setIsActive(true);  
     } else {
-      setIsActive(false); // => Detiene el contador si init es falso
-      setTime(contTime);  // => Reinicia el tiempo cuando init cambia
+      setIsActive(false); 
+      setTime(contTime);  
     }
   }, [init, contTime]);
 
-  useEffect(() => { //=> inicia el contador cuando el usuario empieza a escribir, si la validacion es correcta
+  useEffect(() => { 
     let intervalID;
-    if (isActive) { // => estado usado para validar el contador 
+    if (isActive) { 
       intervalID = setInterval(() => {
         setTime((prevTime) => {
           if (prevTime > 0) {
             return prevTime - 1;
           } else {
-            console.log('Fin del juego'); // => proximamente aca va a estar la funcion que se renderiza cuando finaliza el tiempo
+            endgame(); 
             clearInterval(intervalID); 
             return 0;
           }
         });
       }, 1000);
     }
-    return () => clearInterval(intervalID); // => Limpia el intervalo al desmontar el componente
-  }, [isActive]);
+
+    if (playImage) {
+      clearInterval(intervalID);
+    }
+
+    return () => clearInterval(intervalID); 
+  }, [isActive, playImage]);
+
+  const endgame= ()=>{
+   
+    setsuccess("Lo siento, pero no completaste la frase!")
+    setPlayImage(true)
+  }
+
+
   return <>
     <span className="time">
       {time}

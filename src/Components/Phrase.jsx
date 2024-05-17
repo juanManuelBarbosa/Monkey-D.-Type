@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
 import '../styles/phrase.css';
 import data from '../phrases.json';
+import { IoReloadOutline } from "react-icons/io5";
 
-const Phrase = ({ setInit, contTime }) => {
+
+const Phrase = ({ setInit, contTime ,playImage , setPlayImage , success, setsuccess}) => {
 
   //inicializacion de los hooks
   const [typedText, setTypedText] = useState("");
   const [canDelete, setCanDelete] = useState(true);
-  const [playImage, setPlayImage] = useState(false);
   const [currentPhrase, setCurrentPhrase] = useState({});
-  const[TeclasXSegundo ,  setTeclasXSegundo] = useState(0)
+  const[teclasXSegundo ,  setTeclasXSegundo] = useState(0)
+  const [contadorDeTeclas, setContadorDeTeclas] = useState(0)
+  const [errorCount, setErrorCount] = useState(0);  // Estado para contar errores
 
+  
 //reseteo de la pagina cuando cambias el tiempo en el menú
   useEffect(() => {
     setTypedText('');
     setInit(false);
     selectRandomPhrase();
+    setTeclasXSegundo(contTime)
     let input = document.getElementsByClassName('input')[0];
     input.focus();
   }, [contTime]); 
@@ -34,12 +39,15 @@ const Phrase = ({ setInit, contTime }) => {
     const inputText = e.target.value;
     setTypedText(inputText);
     setInit(true);
+    setContadorDeTeclas(prevCount => prevCount + 1)
     if (inputText === currentPhrase.frase) {
+      setsuccess("¡Felicidades, completaste la frase con exito!")
       setPlayImage(true);
     } else if (inputText === currentPhrase.frase.substring(0, inputText.length)) {
       setCanDelete(false);
     } else {
       setCanDelete(true);
+      setErrorCount(prevErrorCount => prevErrorCount + 1);
     }
   };
 
@@ -52,12 +60,11 @@ const Phrase = ({ setInit, contTime }) => {
   };
 
 
-
   return (
     <>
       <div className="contenedor">
         {currentPhrase.frase && currentPhrase.frase.split("").map((letter, index) => {
-          let color = "gray";                           //establece todo a gris  
+          let color = "gray";                           
           let active = "";
           if (index === typedText.length) {             //va manejando la posicion del estado actibo para mover el cursor de texto
             active = 'active';
@@ -88,9 +95,12 @@ const Phrase = ({ setInit, contTime }) => {
 
       {playImage && currentPhrase.urlImagen && (
         <div className="image-container show">
-          <h2 className="fade-in">¡Bien Hecho!</h2>
-          <h2 className="fade-in">Puntuación:</h2>
-          <img src={currentPhrase.urlImagen} alt="Image" className="fade-in" />
+          <h2 className="fade-in">{success}</h2>
+          <h3 className="fade-in">palabras por minuto (PPM): <span>{contadorDeTeclas !== 0 ? ((contadorDeTeclas / 5) * (60 / teclasXSegundo)).toFixed(2) : 0}</span>  </h3>   
+          <h4 className="fade-in">cantidad de errores: <span>{errorCount}</span></h4>       
+            <img src={currentPhrase.urlImagen} alt={`imagen ilustrativa de ${currentPhrase.nombrePersonaje}`} className="fade-in" />
+            <a href="/" className="reload"><IoReloadOutline /></a>
+
         </div>
       )}
     </>
